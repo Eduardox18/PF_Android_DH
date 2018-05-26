@@ -1,6 +1,4 @@
-# PF_Android_DH
-
-Aplicación en Android RSX (Registro de Siniestros Xalapa)<br/>
+# RSX (Registro de Siniestros Xalapa)
 Trabajo final de la Experiencia Educativa Desarrollo de Aplicaciones, impartida por el maestro Mario Alberto Hernández Pérez.<br/>
 
 Autores:<br/>

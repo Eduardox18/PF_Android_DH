@@ -22,7 +22,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Introduce tu usuario y contraseña para continuar"
+        android:text="Introduce tu usuario y contraseña"
         android:textColor="@android:color/background_dark"
         android:textSize="21sp"/>
 
@@ -85,5 +85,6 @@
         android:id="@+id/registrarse_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registrarse" />
+        android:text="Registrarse"
+        android:onClick="registrar"/>
 </LinearLayout>

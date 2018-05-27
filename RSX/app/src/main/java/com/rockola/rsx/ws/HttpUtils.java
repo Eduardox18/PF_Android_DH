@@ -1,5 +1,7 @@
 package com.rockola.rsx.ws;
 
+import com.rockola.rsx.ws.pojos.Conductor;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -14,13 +16,21 @@ import java.net.URL;
 
 public class HttpUtils {
     private static final String BASE_URL =
-            "http://192.168.43.194:8080/Transito/transito/";
+            "http://192.168.0.10:8080/Transito/transito/";
     private static final Integer CONNECT_TIMEOUT = 4000; //MILISEGUNDOS
     private static final Integer READ_TIMEOUT = 10000; //MILISEGUNDOS
 
     public static Response ingresarSistema(String celular, String contrasena) {
         String param = String.format("telCelular=%s&password=%s", celular, contrasena);
         return invocarServicioWeb("conductor/ingresarApp", "POST", param);
+    }
+
+    public static Response registrarConductor(Conductor conductor) {
+        String param = String.format("nombre=%s&apPaterno=%s&apMaterno=%s&fechaNacimiento=%s" +
+                "&noLicencia=%s&telCelular=%s&password=%s", conductor.getNombre(),
+                conductor.getApPaterno(), conductor.getApMaterno(), conductor.getFechaNacimiento(),
+                conductor.getNoLicencia(), conductor.getTelCelular(), conductor.getPassword());
+        return invocarServicioWeb("conductor/agregarConductor", "POST", param);
     }
 
     private static Response invocarServicioWeb(String url, String tipoinvocacion, String parametros){

@@ -28,12 +28,13 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/txt_codigo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:hint="Código de verificación"
+            android:maxLength="4"
             android:inputType="number" />
     </android.support.design.widget.TextInputLayout>
 
@@ -41,5 +42,6 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Validar" />/>
+        android:text="Validar"
+        android:onClick="activarUsuario"/>/>
 </LinearLayout>

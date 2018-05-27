@@ -124,8 +124,11 @@ public class AccesoActivity extends AppCompatActivity {
                 intent.putExtra("tel_celular",
                         mensaje.getConductor().getTelCelular().toString());
                 startActivity(intent);
-            }
-            else {
+            } else if (mensaje.getStatusMensaje() == 252){
+                Intent intent = new Intent(this, ValidarCodigoActivity.class);
+                intent.putExtra("telCelular", txt_cel.getText().toString());
+                startActivity(intent);
+            } else {
                 mostrarAlertDialog((mensaje.getStatusMensaje() == 1) ? "Error" : "Aviso",
                         mensaje.getMensaje());
             }

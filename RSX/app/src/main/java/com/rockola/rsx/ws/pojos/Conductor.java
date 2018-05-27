@@ -9,13 +9,14 @@ public class Conductor {
     private String noLicencia;
     private String telCelular;
     private String password;
+    private Integer codigoVerificacion;
+    private boolean status;
 
     public Conductor() {
     }
 
-    public Conductor(Integer idConductor, String nombre, String apPaterno, String apMaterno,
+    public Conductor(String nombre, String apPaterno, String apMaterno,
                      String fechaNacimiento, String noLicencia, String telCelular, String password) {
-        this.idConductor = idConductor;
         this.nombre = nombre;
         this.apPaterno = apPaterno;
         this.apMaterno = apMaterno;
@@ -26,7 +27,8 @@ public class Conductor {
     }
 
     public Conductor(String nombre, String apPaterno, String apMaterno, String fechaNacimiento,
-                     String noLicencia, String telCelular, String password) {
+                     String noLicencia, String telCelular, String password, Integer codigoVerificacion,
+                     boolean status) {
         this.nombre = nombre;
         this.apPaterno = apPaterno;
         this.apMaterno = apMaterno;
@@ -34,9 +36,9 @@ public class Conductor {
         this.noLicencia = noLicencia;
         this.telCelular = telCelular;
         this.password = password;
+        this.codigoVerificacion = codigoVerificacion;
+        this.status = status;
     }
-
-
 
     public Integer getIdConductor() {
         return idConductor;
@@ -100,5 +102,21 @@ public class Conductor {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Integer getCodigoVerificacion() {
+        return codigoVerificacion;
+    }
+
+    public void setCodigoVerificacion(Integer codigoVerificacion) {
+        this.codigoVerificacion = codigoVerificacion;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

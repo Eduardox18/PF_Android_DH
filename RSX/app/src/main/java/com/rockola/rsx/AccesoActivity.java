@@ -49,6 +49,11 @@ public class AccesoActivity extends AppCompatActivity {
         }
     }
 
+    public void registrar (View view) {
+        Intent intent = new Intent(AccesoActivity.this, RegistroActivity.class);
+        startActivity(intent);
+    }
+
     public boolean validar() {
         boolean flag = true;
         if (txt_cel.getText() == null || txt_cel.getText().toString().isEmpty()) {

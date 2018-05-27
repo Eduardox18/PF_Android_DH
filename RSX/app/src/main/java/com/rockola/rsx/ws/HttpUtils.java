@@ -33,6 +33,11 @@ public class HttpUtils {
         return invocarServicioWeb("conductor/agregarConductor", "POST", param);
     }
 
+    public static Response activarConductor (String celular, String codigo) {
+        String param = String.format("telCelular=%s&codigoVerificacion=%s", celular, codigo);
+        return invocarServicioWeb("conductor/activarConductor", "POST", param);
+    }
+
     private static Response invocarServicioWeb(String url, String tipoinvocacion, String parametros){
         HttpURLConnection c = null;
         URL u = null;

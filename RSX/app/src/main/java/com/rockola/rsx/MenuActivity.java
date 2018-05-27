@@ -7,8 +7,9 @@ import android.widget.Toast;
 
 public class MenuActivity extends AppCompatActivity {
 
-    private String id_usuario;
+    private String id_conductor;
     private String nombre;
+    private String tel_celular;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +21,9 @@ public class MenuActivity extends AppCompatActivity {
 
     private void parametrosIntent() {
         Intent intent = getIntent();
-        id_usuario = intent.getStringExtra("id_usuario");
+        id_conductor = intent.getStringExtra("id_conductor");
         nombre = intent.getStringExtra("nombre");
+        tel_celular = intent.getStringExtra("tel_celular");
 
         Toast.makeText(this, "Bienvenido " + nombre,
                 Toast.LENGTH_SHORT).show();

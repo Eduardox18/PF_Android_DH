@@ -45,7 +45,7 @@ public class ValidarCodigoActivity extends AppCompatActivity {
 
     private void parametrosIntent() {
         Intent intent = getIntent();
-        tel_celular = intent.getStringExtra("telCelular");
+        tel_celular = intent.getStringExtra("tel_celular");
     }
 
     public void activarUsuario(View view) {

@@ -183,7 +183,7 @@ public class RegistroActivity extends AppCompatActivity {
             Mensaje mensaje = new Gson().fromJson(resws.getResult(), Mensaje.class);
             if (mensaje.getStatusMensaje() == 0) {
                 Intent intent = new Intent(this, ValidarCodigoActivity.class);
-                intent.putExtra("telCelular", txt_celular.getText().toString());
+                intent.putExtra("tel_celular", txt_celular.getText().toString());
                 startActivity(intent);
             } else if (mensaje.getStatusMensaje() == 1) {
                 mostrarAlertDialog("Error", mensaje.getMensaje());

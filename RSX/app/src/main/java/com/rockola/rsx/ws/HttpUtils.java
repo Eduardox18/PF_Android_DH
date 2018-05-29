@@ -1,6 +1,7 @@
 package com.rockola.rsx.ws;
 
 import com.rockola.rsx.ws.pojos.Conductor;
+import com.rockola.rsx.ws.pojos.Vehiculo;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -36,6 +37,14 @@ public class HttpUtils {
     public static Response activarConductor (String celular, String codigo) {
         String param = String.format("telCelular=%s&codigoVerificacion=%s", celular, codigo);
         return invocarServicioWeb("conductor/activarConductor", "POST", param);
+    }
+
+    public static Response registrarVehiculo (Vehiculo vehiculo) {
+        String param = String.format("noPlaca=%s&modelo=%s&anio=%s&noPolizaSeguro=%s&idMarca=%s&" +
+        "idAseguradora=%s&idColor=%s&idConductor=%s", vehiculo.getNoPlaca(), vehiculo.getModelo(),
+                vehiculo.getAnio(), vehiculo.getNoPolizaSeguro(), vehiculo.getIdMarca(),
+                vehiculo.getIdAseguradora(), vehiculo.getIdColor(), vehiculo.getIdConductor());
+        return invocarServicioWeb("vehiculo/registrarVehiculo", "POST", param);
     }
 
     private static Response invocarServicioWeb(String url, String tipoinvocacion, String parametros){

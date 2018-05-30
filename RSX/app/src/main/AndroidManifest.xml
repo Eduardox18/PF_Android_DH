@@ -25,7 +25,8 @@
             android:name=".MenuActivity"
             android:label="Menú principal" />
         <activity android:name=".RegistroActivity" />
-        <activity android:name=".ValidarCodigoActivity"></activity>
+        <activity android:name=".ValidarCodigoActivity" />
+        <activity android:name=".VehiculoActivity"></activity>
     </application>
 
 </manifest>

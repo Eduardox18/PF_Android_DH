@@ -26,7 +26,7 @@ public class MenuActivity extends AppCompatActivity {
         nombre = intent.getStringExtra("nombre");
         tel_celular = intent.getStringExtra("tel_celular");
 
-        Toast.makeText(this, "Bienvenido " + id_conductor,
+        Toast.makeText(this, "Bienvenido " + nombre,
                 Toast.LENGTH_SHORT).show();
     }
 

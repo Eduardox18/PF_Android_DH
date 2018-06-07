@@ -17,7 +17,7 @@ import java.net.URL;
 
 public class HttpUtils {
     private static final String BASE_URL =
-            "http://192.168.100.8:8080/Transito/transito/";
+            "http://206.189.124.168:8080/transito/";
     private static final Integer CONNECT_TIMEOUT = 4000; //MILISEGUNDOS
     private static final Integer READ_TIMEOUT = 10000; //MILISEGUNDOS
 

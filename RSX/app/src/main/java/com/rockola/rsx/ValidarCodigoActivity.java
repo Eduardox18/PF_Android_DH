@@ -112,7 +112,8 @@ public class ValidarCodigoActivity extends AppCompatActivity {
             Mensaje mensaje = new Gson().fromJson(resws.getResult(), Mensaje.class);
             if (mensaje.getStatusMensaje() == 150) {
                 Intent intent = new Intent(this, MenuActivity.class);
-                intent.putExtra("id_conductor", mensaje.getConductor().getIdConductor());
+                intent.putExtra("id_conductor",
+                        String.valueOf(mensaje.getConductor().getIdConductor()));
                 String nombreCompleto = mensaje.getConductor().getNombre() + " " +
                         mensaje.getConductor().getApPaterno() + " " +
                         mensaje.getConductor().getApMaterno();

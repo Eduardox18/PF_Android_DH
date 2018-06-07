@@ -15,19 +15,16 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:text="Introduce los siguientes campos para tu registro"
         android:textAlignment="viewStart"
         android:textColor="@android:color/background_dark"
-        android:textSize="21sp" />
+        android:textSize="20sp" />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="8dp"
-            android:layout_weight="1" />
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <EditText
             android:id="@+id/txt_nombre"
@@ -36,17 +33,14 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="Nombre(s)"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textSize="14sp" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="8dp"
-            android:layout_weight="1" />
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <EditText
             android:id="@+id/txt_paterno"
@@ -55,17 +49,14 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="Apellido paterno"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textSize="14sp" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="8dp"
-            android:layout_weight="1" />
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <EditText
             android:id="@+id/txt_materno"
@@ -74,17 +65,14 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="Apellido materno"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textSize="14sp" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="8dp"
-            android:layout_weight="1" />
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <EditText
             android:id="@+id/txt_licencia"
@@ -93,18 +81,15 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="Número de licencia"
+            android:inputType="number"
             android:maxLength="12"
-            android:inputType="number" />
+            android:textSize="14sp" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="8dp"
-            android:layout_weight="1" />
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <EditText
             android:id="@+id/txt_celular"
@@ -113,22 +98,30 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="Teléfono celular"
+            android:inputType="phone"
             android:maxLength="10"
-            android:inputType="phone" />
+            android:textSize="14sp" />
     </android.support.design.widget.TextInputLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_weight="1" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:text="Fecha de nacimiento:"
         android:textAlignment="viewStart"
         android:textColor="@android:color/background_dark"
-        android:textSize="21sp" />
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="horizontal"
         android:weightSum="3">
 
@@ -144,8 +137,9 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="Día"
+                android:inputType="number"
                 android:maxLength="2"
-                android:inputType="number" />
+                android:textSize="14sp" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -160,8 +154,9 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="Mes"
+                android:inputType="number"
                 android:maxLength="2"
-                android:inputType="number" />
+                android:textSize="14sp" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -176,20 +171,17 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="Año"
+                android:inputType="number"
                 android:maxLength="4"
-                android:inputType="number" />
+                android:textSize="14sp" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         app:passwordToggleEnabled="true">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="8dp"
-            android:layout_weight="1" />
 
         <EditText
             android:id="@+id/txt_password"
@@ -198,21 +190,37 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="Contraseña"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textSize="14sp" />
+
     </android.support.design.widget.TextInputLayout>
 
-    <Button
-        android:id="@+id/registrar_button"
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Registrarme"
-        android:onClick="registrar"/>
+        android:layout_height="8dp"
+        android:layout_weight="1" />
 
-    <Button
-        android:id="@+id/cancelar_button"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cancelar"
-        android:onClick="cancelar"/>
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancelar_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="cancelar"
+            android:text="Cancelar" />
+
+        <Button
+            android:id="@+id/registrar_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="registrar"
+            android:text="Registrarme" />
+    </LinearLayout>
 
 </LinearLayout>

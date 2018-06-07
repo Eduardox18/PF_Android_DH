@@ -64,8 +64,11 @@ public class VehiculoActivity extends AppCompatActivity {
         txt_anio = (EditText) findViewById(R.id.txt_anio);
         txt_poliza = (EditText) findViewById(R.id.txt_poliza);
         coloresSpi = (Spinner) findViewById(R.id.colorSpi);
+        coloresSpi.setPrompt("Color");
         marcaSpi = (Spinner) findViewById(R.id.marcaSpi);
+        marcaSpi.setPrompt("Marca");
         aseguradorasSpi = (Spinner) findViewById(R.id.aseguradoraSpi);
+        aseguradorasSpi.setPrompt("Aseguradoras");
 
         parametrosIntent();
         llenarSpinners();

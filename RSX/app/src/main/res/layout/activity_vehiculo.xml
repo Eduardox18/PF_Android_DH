@@ -27,13 +27,14 @@
         android:layout_weight="1" />
 
     <EditText
-        android:id="@+id/txt_nombre2"
+        android:id="@+id/txt_placa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
-        android:hint="NoPlaca"
-        android:inputType="textPersonName" />
+        android:hint="Número de Placa (Ejemplo: XYZ-23-123)"
+        android:inputType="textPersonName"
+        android:maxLength="10" />
 
     <Space
         android:layout_width="match_parent"
@@ -41,7 +42,7 @@
         android:layout_weight="1" />
 
     <EditText
-        android:id="@+id/txt_paterno2"
+        android:id="@+id/txt_modelo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -55,13 +56,13 @@
         android:layout_weight="1" />
 
     <EditText
-        android:id="@+id/txt_materno2"
+        android:id="@+id/txt_anio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
         android:hint="Año"
-        android:inputType="textPersonName" />
+        android:inputType="number" />
 
     <Space
         android:layout_width="match_parent"
@@ -69,7 +70,7 @@
         android:layout_weight="1" />
 
     <EditText
-        android:id="@+id/txt_licencia2"
+        android:id="@+id/txt_poliza"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -91,10 +92,11 @@
         android:text="Marca" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/marcaSpi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:spinnerMode="dialog" />
 
     <Space
         android:layout_width="match_parent"
@@ -109,9 +111,10 @@
         android:text="Aseguradora (Opcional)" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/aseguradoraSpi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:spinnerMode="dialog"
         android:layout_weight="1" />
 
     <TextView
@@ -121,9 +124,10 @@
         android:text="Color" />
 
     <Spinner
-        android:id="@+id/spinner3"
+        android:id="@+id/colorSpi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:spinnerMode="dialog"
         android:layout_weight="1" />
 
     <Space
@@ -136,7 +140,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:onClick="registrar"
+        android:onClick="registrarVehiculo"
         android:text="Registrar" />
 
     <Button

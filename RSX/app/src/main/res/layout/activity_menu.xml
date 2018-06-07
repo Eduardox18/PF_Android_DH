@@ -19,6 +19,7 @@
         android:id="@+id/registrar_vehiculo_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="registrarVehiculo"
         android:text="Registrar vehículo" />
 
     <Button

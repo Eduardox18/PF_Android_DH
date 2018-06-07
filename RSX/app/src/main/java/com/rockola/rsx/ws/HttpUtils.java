@@ -17,7 +17,7 @@ import java.net.URL;
 
 public class HttpUtils {
     private static final String BASE_URL =
-            "http://192.168.0.10:8080/Transito/transito/";
+            "http://192.168.100.8:8080/Transito/transito/";
     private static final Integer CONNECT_TIMEOUT = 4000; //MILISEGUNDOS
     private static final Integer READ_TIMEOUT = 10000; //MILISEGUNDOS
 
@@ -44,7 +44,22 @@ public class HttpUtils {
         "idAseguradora=%s&idColor=%s&idConductor=%s", vehiculo.getNoPlaca(), vehiculo.getModelo(),
                 vehiculo.getAnio(), vehiculo.getNoPolizaSeguro(), vehiculo.getIdMarca(),
                 vehiculo.getIdAseguradora(), vehiculo.getIdColor(), vehiculo.getIdConductor());
-        return invocarServicioWeb("vehiculo/registrarVehiculo", "POST", param);
+        return invocarServicioWeb("vehiculo/agregarVehiculo", "POST", param);
+    }
+
+    public static Response consultarColores() {
+        String param = "";
+        return invocarServicioWeb("color/consultarColores", "GET", param);
+    }
+
+    public static Response consultarAseguradoras() {
+        String param = "";
+        return invocarServicioWeb("aseguradora/consultarAseguradoras", "GET", param);
+    }
+
+    public static Response consultarMarcas() {
+        String param = "";
+        return invocarServicioWeb("marca/consultarMarcas", "GET", param);
     }
 
     private static Response invocarServicioWeb(String url, String tipoinvocacion, String parametros){

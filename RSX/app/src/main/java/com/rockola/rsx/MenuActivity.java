@@ -3,6 +3,7 @@ package com.rockola.rsx;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 public class MenuActivity extends AppCompatActivity {
@@ -25,7 +26,13 @@ public class MenuActivity extends AppCompatActivity {
         nombre = intent.getStringExtra("nombre");
         tel_celular = intent.getStringExtra("tel_celular");
 
-        Toast.makeText(this, "Bienvenido " + nombre,
+        Toast.makeText(this, "Bienvenido " + id_conductor,
                 Toast.LENGTH_SHORT).show();
+    }
+
+    public void registrarVehiculo(View view) {
+        Intent intent = new Intent(MenuActivity.this, VehiculoActivity.class);
+        intent.putExtra("id_conductor", id_conductor);
+        startActivity(intent);
     }
 }

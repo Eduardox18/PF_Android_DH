@@ -3,17 +3,16 @@ package com.rockola.rsx.ws.pojos;
 public class Vehiculo {
     private String noPlaca;
     private String modelo;
-    private Integer anio;
+    private String anio;
     private String noPolizaSeguro;
-    private Integer idMarca;
-    private Integer idAseguradora;
-    private Integer idColor;
-    private Integer idConductor;
+    private String idMarca;
+    private String idAseguradora;
+    private String idColor;
+    private String idConductor;
 
     public Vehiculo (){}
 
-    public Vehiculo(String noPlaca, String modelo, Integer anio,String noPolizaSeguro,
-                    Integer idMarca, Integer idAseguradora, Integer idColor, Integer idConductor) {
+    public Vehiculo(String noPlaca, String modelo, String anio, String noPolizaSeguro, String idMarca, String idAseguradora, String idColor, String idConductor) {
         this.noPlaca = noPlaca;
         this.modelo = modelo;
         this.anio = anio;
@@ -40,11 +39,11 @@ public class Vehiculo {
         this.modelo = modelo;
     }
 
-    public Integer getAnio() {
+    public String getAnio() {
         return anio;
     }
 
-    public void setAnio(Integer anio) {
+    public void setAnio(String anio) {
         this.anio = anio;
     }
 
@@ -56,37 +55,35 @@ public class Vehiculo {
         this.noPolizaSeguro = noPolizaSeguro;
     }
 
-    public Integer getIdMarca() {
+    public String getIdMarca() {
         return idMarca;
     }
 
-    public void setIdMarca(Integer idMarca) {
+    public void setIdMarca(String idMarca) {
         this.idMarca = idMarca;
     }
 
-    public Integer getIdAseguradora() {
+    public String getIdAseguradora() {
         return idAseguradora;
     }
 
-    public void setIdAseguradora(Integer idAseguradora) {
+    public void setIdAseguradora(String idAseguradora) {
         this.idAseguradora = idAseguradora;
     }
 
-    public Integer getIdColor() {
+    public String getIdColor() {
         return idColor;
     }
 
-    public void setIdColor(Integer idColor) {
+    public void setIdColor(String idColor) {
         this.idColor = idColor;
     }
 
-    public Integer getIdConductor() {
+    public String getIdConductor() {
         return idConductor;
     }
 
-    public void setIdConductor(Integer idConductor) {
+    public void setIdConductor(String idConductor) {
         this.idConductor = idConductor;
     }
-
-
 }

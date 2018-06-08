@@ -4,9 +4,11 @@ import com.rockola.rsx.ws.pojos.Conductor;
 import com.rockola.rsx.ws.pojos.Vehiculo;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -85,10 +87,11 @@ public class HttpUtils {
                 c.setConnectTimeout(CONNECT_TIMEOUT);
                 c.setReadTimeout(READ_TIMEOUT);
                 //----PASAR PARÁMETROS EN EL CUERPO DEL MENSAJE POST, PUT y DELETE----//
-                DataOutputStream wr = new DataOutputStream(c.getOutputStream());
-                wr.writeBytes(parametros);
-                wr.flush();
-                wr.close();
+                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
+                        c.getOutputStream(), "UTF-8"));
+                bw.write(parametros);
+                bw.flush();
+                bw.close();
                 //------------------------------------------------------//
             }
             res = new Response();

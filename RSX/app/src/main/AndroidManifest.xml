@@ -14,7 +14,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".AccesoActivity"
-            android:label="Registro de Siniestros Xalapa">
+            android:label="Registro de Siniestros Xalapa"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,12 +24,29 @@
         </activity>
         <activity
             android:name=".MenuActivity"
-            android:label="Menú principal" />
-        <activity android:name=".RegistroActivity" />
-        <activity android:name=".ValidarCodigoActivity" />
-        <activity android:name=".VehiculoActivity" />
-        <activity android:name=".ReporteActivity" />
-        <activity android:name=".HistorialActivity"></activity>
+            android:label="Menú principal"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".RegistroActivity"
+            android:label="Registro"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ValidarCodigoActivity"
+            android:label="Validación de cuenta"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".VehiculoActivity"
+            android:label="Agregar vehículo"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ReporteActivity"
+            android:label="Levantar reporte"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".HistorialActivity"
+            android:label="Historial de reportes"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
     </application>
 
 </manifest>

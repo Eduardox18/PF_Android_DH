@@ -4,33 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fondo"
+    android:gravity="center_vertical"
     android:orientation="vertical"
-    android:paddingBottom="10dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingTop="10dp"
+    android:paddingBottom="15dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="15dp"
     tools:context=".MenuActivity">
 
-    <Space
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="250dp" />
+        android:layout_height="274dp"
+        app:srcCompat="@drawable/menu" />
 
     <Button
         android:id="@+id/registrar_vehiculo_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/round_background"
         android:onClick="registrarVehiculo"
-        android:text="Registrar vehículo" />
+        android:text="Registrar vehículo"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/fondo"
+        android:textStyle="bold" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
 
     <Button
         android:id="@+id/levantar_reporte_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Levantar reporte" />
+        android:background="@drawable/round_background"
+        android:text="Levantar reporte"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/fondo"
+        android:textStyle="bold" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
 
     <Button
         android:id="@+id/historial_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Historial de reportes" />
+        android:background="@drawable/round_background"
+        android:text="Historial de reportes"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/fondo"
+        android:textStyle="bold" />
 </LinearLayout>

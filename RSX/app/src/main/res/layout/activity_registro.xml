@@ -5,25 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="10dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingTop="10dp"
+    android:paddingBottom="15dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="15dp"
+    android:background="@color/fondo"
     tools:context=".RegistroActivity">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
         android:layout_weight="1"
-        android:text="Introduce los siguientes campos para tu registro"
-        android:textAlignment="viewStart"
-        android:textColor="@android:color/background_dark"
-        android:textSize="20sp" />
+        app:srcCompat="@drawable/register" />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColorHint="@color/colorAccent"
         android:layout_weight="1">
 
         <EditText
@@ -31,15 +30,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/colorAccent"
             android:ems="10"
             android:hint="Nombre(s)"
             android:inputType="textPersonName"
-            android:textSize="14sp" />
+            android:textColor="@color/colorAccent"
+            android:textColorHint="#ffffff"
+            android:textSize="18sp" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColorHint="@color/colorAccent"
         android:layout_weight="1">
 
         <EditText
@@ -47,15 +50,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/colorAccent"
             android:ems="10"
             android:hint="Apellido paterno"
             android:inputType="textPersonName"
-            android:textSize="14sp" />
+            android:textColor="@color/colorAccent"
+            android:textColorHint="#ffffff"
+            android:textSize="18sp" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColorHint="@color/colorAccent"
         android:layout_weight="1">
 
         <EditText
@@ -63,15 +70,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/colorAccent"
             android:ems="10"
             android:hint="Apellido materno"
             android:inputType="textPersonName"
-            android:textSize="14sp" />
+            android:textColor="@color/colorAccent"
+            android:textColorHint="#ffffff"
+            android:textSize="18sp" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColorHint="@color/colorAccent"
         android:layout_weight="1">
 
         <EditText
@@ -79,16 +90,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/colorAccent"
             android:ems="10"
             android:hint="Número de licencia"
             android:inputType="number"
             android:maxLength="12"
-            android:textSize="14sp" />
+            android:textColor="@color/colorAccent"
+            android:textColorHint="#ffffff"
+            android:textSize="18sp" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColorHint="@color/colorAccent"
         android:layout_weight="1">
 
         <EditText
@@ -96,11 +111,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/colorAccent"
             android:ems="10"
             android:hint="Teléfono celular"
             android:inputType="phone"
             android:maxLength="10"
-            android:textSize="14sp" />
+            android:textColor="@color/colorAccent"
+            android:textColorHint="#ffffff"
+            android:textSize="18sp" />
     </android.support.design.widget.TextInputLayout>
 
     <Space
@@ -115,8 +133,8 @@
         android:layout_weight="1"
         android:text="Fecha de nacimiento:"
         android:textAlignment="viewStart"
-        android:textColor="@android:color/background_dark"
-        android:textSize="20sp" />
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -128,6 +146,7 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColorHint="@color/colorAccent"
             android:layout_weight="1">
 
             <EditText
@@ -135,16 +154,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:backgroundTint="@color/colorAccent"
                 android:ems="10"
                 android:hint="Día"
                 android:inputType="number"
                 android:maxLength="2"
-                android:textSize="14sp" />
+                android:textColor="@color/colorAccent"
+                android:textColorHint="#ffffff"
+                android:textSize="18sp" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColorHint="@color/colorAccent"
             android:layout_weight="1">
 
             <EditText
@@ -152,16 +175,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:backgroundTint="@color/colorAccent"
                 android:ems="10"
                 android:hint="Mes"
                 android:inputType="number"
                 android:maxLength="2"
-                android:textSize="14sp" />
+                android:textColor="@color/colorAccent"
+                android:textColorHint="#ffffff"
+                android:textSize="18sp" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColorHint="@color/colorAccent"
             android:layout_weight="1">
 
             <EditText
@@ -169,11 +196,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:backgroundTint="@color/colorAccent"
                 android:ems="10"
                 android:hint="Año"
                 android:inputType="number"
                 android:maxLength="4"
-                android:textSize="14sp" />
+                android:textColor="@color/colorAccent"
+                android:textColorHint="#ffffff"
+                android:textSize="18sp" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
@@ -181,6 +211,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textColorHint="@color/colorAccent"
         app:passwordToggleEnabled="true">
 
         <EditText
@@ -188,10 +219,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/colorAccent"
             android:ems="10"
             android:hint="Contraseña"
             android:inputType="textPassword"
-            android:textSize="14sp" />
+            android:textColor="@color/colorAccent"
+            android:textColorHint="#ffffff"
+            android:textSize="18sp" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -204,23 +238,41 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:gravity="bottom"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/cancelar_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
             android:layout_weight="1"
+            android:background="@drawable/round_background"
+            android:fontFamily="sans-serif"
             android:onClick="cancelar"
-            android:text="Cancelar" />
+            android:text="Cancelar"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/fondo"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/registrar_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
             android:layout_weight="1"
+            android:background="@drawable/round_background"
+            android:fontFamily="sans-serif"
             android:onClick="registrar"
-            android:text="Registrarme" />
+            android:text="Registrarme"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/fondo"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>

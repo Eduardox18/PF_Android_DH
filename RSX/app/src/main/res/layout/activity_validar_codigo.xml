@@ -4,28 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="10dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingTop="10dp"
+    android:paddingBottom="15dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="15dp"
+    android:background="@color/fondo"
     tools:context=".ValidarCodigoActivity"
     android:orientation="vertical">
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="189dp"
+        app:srcCompat="@drawable/code" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hemos enviado un mensaje SMS a tu teléfono celular, por favor introduce el código de confirmación que recibiste:"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/white"
         android:textSize="21sp" />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/colorAccent">
 
         <EditText
             android:id="@+id/txt_codigo"
@@ -35,13 +39,28 @@
             android:ems="10"
             android:hint="Código de verificación"
             android:maxLength="4"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textColor="@color/colorAccent"
+            android:backgroundTint="@color/colorAccent"
+            android:textColorHint="#ffffff"
+            android:textSize="18sp"/>
     </android.support.design.widget.TextInputLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="170dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/round_background"
+        android:fontFamily="sans-serif"
+        android:onClick="activarUsuario"
         android:text="Validar"
-        android:onClick="activarUsuario"/>/>
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/fondo"
+        android:textStyle="bold" />/>
 </LinearLayout>

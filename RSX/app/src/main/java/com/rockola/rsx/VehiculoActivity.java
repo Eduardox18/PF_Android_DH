@@ -169,6 +169,7 @@ public class VehiculoActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
+                        finish();
                     }
                 });
         dialog.show();

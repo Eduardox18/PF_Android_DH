@@ -172,6 +172,7 @@ public class FotoActivity extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int which) {
                         dialog.dismiss();
+                        finish();
                     }
                 });
         dialog.show();

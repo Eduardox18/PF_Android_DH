@@ -18,7 +18,7 @@
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:layout_weight="1"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logonuevo" />
 
     <Space
         android:layout_width="match_parent"

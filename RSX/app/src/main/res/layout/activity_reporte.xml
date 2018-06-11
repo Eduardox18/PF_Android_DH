@@ -46,9 +46,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:text="Información del enemigo:"
-        android:textColor="@color/colorAccent"
         android:backgroundTint="@color/colorAccent"
+        android:text="Información del contrario:"
+        android:textColor="@color/colorAccent"
         android:textColorHint="#ffffff"
         android:textSize="18sp" />
 

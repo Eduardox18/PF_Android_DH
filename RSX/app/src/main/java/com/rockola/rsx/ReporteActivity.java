@@ -61,6 +61,7 @@ public class ReporteActivity extends AppCompatActivity {
 
     private Vehiculo vehiculo;
     private String id_vehiculo_reporte;
+    private String id_reporte_actual;
 
     private boolean existeVehiculo = false;
 
@@ -109,7 +110,6 @@ public class ReporteActivity extends AppCompatActivity {
     public void levantarReporte(View view) {
         if (validar() && isOnline()) {
             if (existeVehiculo) {
-
                 if (ActivityCompat.checkSelfPermission(ReporteActivity.this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     return;
                 }
@@ -527,23 +527,43 @@ public class ReporteActivity extends AppCompatActivity {
         if (resws != null && !resws.isError() && resws.getResult() != null) {
             Mensaje mensaje = new Gson().fromJson(resws.getResult(), Mensaje.class);
             if (mensaje.getStatusMensaje() == 500) {
-                mostrarAlertDialog("Éxito", mensaje.getMensaje());
+                WSGETUltimoReporte task = new WSGETUltimoReporte();
+                task.execute();
             } else if (mensaje.getStatusMensaje() == 501) {
                 mostrarAlertDialog("Intente más tarde", mensaje.getMensaje());
             } else if (mensaje.getStatusMensaje() == 1) {
                 mostrarAlertDialog("Error", mensaje.getMensaje());
             }
 
-            txt_nombreSin.getText().clear();
-            txt_paternoSin.getText().clear();
-            txt_maternoSin.getText().clear();
-            txt_placa.getText().clear();
-            txt_modelo.getText().clear();
-            txt_anio.getText().clear();
-            txt_poliza.getText().clear();
-            marcas_spi_reporte.setSelection(0);
-            aseguradoras_spi_reporte.setSelection(0);
-            colores_spi_reporte.setSelection(0);
+
+        } else {
+            mostrarAlertDialog("Error", resws.getResult());
+        }
+    }
+
+    class WSGETUltimoReporte extends AsyncTask<String, String, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            resws = HttpUtils.consultarUltimoReporte();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            resultadoUltimoReporte();
+        }
+    }
+
+    private void resultadoUltimoReporte() {
+        if (resws != null && !resws.isError() && resws.getResult() != null) {
+            Reporte reporte = new Gson().fromJson(resws.getResult(), Reporte.class);
+            if (reporte != null) {
+                id_reporte_actual = String.valueOf(reporte.getIdReporte());
+                Intent intent = new Intent(ReporteActivity.this, FotoActivity.class);
+                intent.putExtra("id_reporte", id_reporte_actual);
+                startActivity(intent);
+            }
         } else {
             mostrarAlertDialog("Error", resws.getResult());
         }

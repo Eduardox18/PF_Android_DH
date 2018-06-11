@@ -1,11 +1,15 @@
 package com.rockola.rsx.ws;
 
+import android.graphics.Bitmap;
+import android.util.Log;
+
 import com.rockola.rsx.ws.pojos.Conductor;
 import com.rockola.rsx.ws.pojos.Reporte;
 import com.rockola.rsx.ws.pojos.Vehiculo;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,6 +17,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 
 /**
  * Created by lalo on 4/6/18.
@@ -20,7 +25,7 @@ import java.net.URL;
 
 public class HttpUtils {
     private static final String BASE_URL =
-            "http://192.168.100.8:8080/Transito/transito/";
+            "http://206.189.124.168:8080/transito/";
     private static final Integer CONNECT_TIMEOUT = 4000; //MILISEGUNDOS
     private static final Integer READ_TIMEOUT = 10000; //MILISEGUNDOS
 
@@ -99,6 +104,11 @@ public class HttpUtils {
         return invocarServicioWeb("dictamen/recuperarDictamen", "POST", param);
     }
 
+    public static Response consultarUltimoReporte() {
+        String param = "";
+        return invocarServicioWeb("reporte/ultimoReporte", "GET", param);
+    }
+
     private static Response invocarServicioWeb(String url, String tipoinvocacion, String parametros){
         HttpURLConnection c = null;
         URL u = null;
@@ -130,6 +140,86 @@ public class HttpUtils {
                 //------------------------------------------------------//
             }
             res = new Response();
+            res.setStatus(c.getResponseCode());
+            if(res.getStatus()!=200 && res.getStatus()!=201){
+                res.setError(true);
+            }
+            if(c.getInputStream()!=null) {
+                BufferedReader br = new BufferedReader(new InputStreamReader(c.getInputStream()));
+                StringBuilder sb = new StringBuilder();
+                String line;
+                while ((line = br.readLine()) != null) {
+                    sb.append(line+"\n");
+                }
+                br.close();
+                res.setResult(sb.toString());
+            }
+        } catch (MalformedURLException ex) {
+            ex.printStackTrace();
+            res.setError(true);
+            res.setResult(ex.getMessage());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            res.setError(true);
+            res.setResult(ex.getMessage());
+        } finally {
+            if (c != null) {
+                c.disconnect();
+            }
+        }
+        return res;
+    }
+
+    public static Response subirFoto(String idReporte, Bitmap bitmap) {
+        Response res = new Response();
+        HttpURLConnection c = null;
+        DataOutputStream outputStream = null;
+
+        try {
+            URL url = new URL(BASE_URL+"fotografia/subir/"+idReporte);
+            c = (HttpURLConnection) url.openConnection();
+            c.setDoInput(true);
+            c.setDoOutput(true);
+            c.setUseCaches(false);
+            c.setRequestMethod("POST");
+            c.setRequestProperty("Connection", "Keep-Alive");
+            c.setRequestProperty("User-Agent", "Android Multipart HTTP Client 1.0");
+            c.setRequestProperty("Content-Type", "application/octet-stream;");
+            //----------MANDAR BYTES A WS-------------//
+            outputStream = new DataOutputStream(c.getOutputStream());
+            ByteArrayOutputStream bitmapOutputStream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bitmapOutputStream);
+
+            byte original[] = bitmapOutputStream.toByteArray();
+
+            int blockbytes, totalbytes, bufferSize;
+            byte[] buffer;
+            int maxBufferSize = 1 * 1024 * 1024;
+
+            int lastbyte = 0;
+            totalbytes = original.length;
+            Log.v("totalbytes",""+totalbytes);
+            bufferSize = Math.min(totalbytes, maxBufferSize);
+            buffer = Arrays.copyOfRange(original,lastbyte,bufferSize);
+            Log.v("copyFromTo","0,"+bufferSize);
+            blockbytes = buffer.length;
+            Log.v("blockbytes",""+blockbytes);
+            while (totalbytes > 0) {
+                outputStream.write(buffer, 0, bufferSize);
+                totalbytes = totalbytes - blockbytes;
+                lastbyte += blockbytes;
+                bufferSize = Math.min(totalbytes, maxBufferSize);
+                buffer = Arrays.copyOfRange(original,lastbyte,lastbyte+bufferSize);
+                blockbytes = buffer.length;
+                Log.v("copyFromTo",""+lastbyte+","+bufferSize);
+                Log.v("blockbytes",""+blockbytes);
+            }
+            bitmapOutputStream.close();
+            outputStream.flush();
+            outputStream.close();
+
+            //----------LEER RESPUESTA DEL WS-----------//
+
             res.setStatus(c.getResponseCode());
             if(res.getStatus()!=200 && res.getStatus()!=201){
                 res.setError(true);

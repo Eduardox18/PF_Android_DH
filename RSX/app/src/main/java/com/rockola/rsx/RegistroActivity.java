@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.gson.Gson;
 import com.rockola.rsx.ws.HttpUtils;
 import com.rockola.rsx.ws.Response;
@@ -38,6 +40,8 @@ public class RegistroActivity extends AppCompatActivity {
     private EditText txt_celular;
     private EditText txt_password;
     private Response resws;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

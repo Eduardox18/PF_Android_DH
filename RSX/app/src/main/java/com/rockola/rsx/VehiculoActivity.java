@@ -36,10 +36,6 @@ public class VehiculoActivity extends AppCompatActivity {
     private List<Marca> listaMarcas;
     private List<Aseguradora> listaAseguradoras;
 
-    private String[] colores = new String[8];
-    private String[] marcas = new String[21];
-    private String[] aseguradoras = new String[11];
-
     private String no_placa;
     private String modelo;
     private String anio;
@@ -64,11 +60,8 @@ public class VehiculoActivity extends AppCompatActivity {
         txt_anio = (EditText) findViewById(R.id.txt_anio);
         txt_poliza = (EditText) findViewById(R.id.txt_poliza);
         coloresSpi = (Spinner) findViewById(R.id.colorSpi);
-        coloresSpi.setPrompt("Color");
         marcaSpi = (Spinner) findViewById(R.id.marcaSpi);
-        marcaSpi.setPrompt("Marca");
         aseguradorasSpi = (Spinner) findViewById(R.id.aseguradoraSpi);
-        aseguradorasSpi.setPrompt("Aseguradoras");
 
         parametrosIntent();
         llenarSpinners();
@@ -101,9 +94,14 @@ public class VehiculoActivity extends AppCompatActivity {
             } else {
                 no_poliza = txt_poliza.getText().toString();
             }
-            marca = Integer.toString(marcaSpi.getSelectedItemPosition() + 1);
-            aseguradora = Integer.toString(aseguradorasSpi.getSelectedItemPosition() + 1);
-            color = Integer.toString(coloresSpi.getSelectedItemPosition() + 1);
+
+            Marca marca_obj = (Marca) marcaSpi.getSelectedItem();
+            Aseguradora ase_obj = (Aseguradora) aseguradorasSpi.getSelectedItem();
+            Color color_obj = (Color) coloresSpi.getSelectedItem();
+
+            marca = Integer.toString(marca_obj.getIdMarca());
+            aseguradora = Integer.toString(ase_obj.getIdAseguradora());
+            color = Integer.toString(color_obj.getIdColor());
 
             Vehiculo vehiculo = new Vehiculo(no_placa, modelo, anio, no_poliza,
                     marca, aseguradora, color, id_conductor);
@@ -131,7 +129,7 @@ public class VehiculoActivity extends AppCompatActivity {
     private boolean validar() {
         boolean ok = true;
         if (txt_placa.getText() == null || txt_placa.getText().toString().isEmpty()
-                || txt_placa.getText().length() != 10) {
+                || txt_placa.getText().length() < 9) {
             txt_placa.setError("Por favor, introduce tu número de placa");
             ok = false;
         }
@@ -224,11 +222,11 @@ public class VehiculoActivity extends AppCompatActivity {
             listaColores = new Gson().fromJson(resws.getResult(),
                     new TypeToken<List<Color>>() {}.getType());
             if (listaColores != null) {
-                for(int i = 0; i < 8; i++) {
-                    colores[i] = listaColores.get(i).getNombre();
-                }
-                coloresSpi.setAdapter(new ArrayAdapter<String>(this,
-                        android.R.layout.simple_spinner_item, colores));
+                coloresSpi.setAdapter(new ArrayAdapter<Color>(this,
+                        android.R.layout.simple_spinner_item, listaColores));
+                coloresSpi.setAdapter(new ArrayAdapter<Color>(this,
+                        R.layout.spinner_item, listaColores));
+
             }
         } else {
             mostrarAlertDialog("Error", resws.getResult());
@@ -254,11 +252,10 @@ public class VehiculoActivity extends AppCompatActivity {
             listaMarcas = new Gson().fromJson(resws.getResult(),
                     new TypeToken<List<Marca>>() {}.getType());
             if (listaMarcas != null) {
-                for(int i = 0; i < 21; i++) {
-                    marcas[i] = listaMarcas.get(i).getNombre();
-                }
-                marcaSpi.setAdapter(new ArrayAdapter<String>(this,
-                        android.R.layout.simple_spinner_item, marcas));
+                marcaSpi.setAdapter(new ArrayAdapter<Marca>(this,
+                        android.R.layout.simple_spinner_item, listaMarcas));
+                marcaSpi.setAdapter(new ArrayAdapter<Marca>(this,
+                        R.layout.spinner_item, listaMarcas));
             }
         } else {
             mostrarAlertDialog("Error", resws.getResult());
@@ -284,11 +281,10 @@ public class VehiculoActivity extends AppCompatActivity {
             listaAseguradoras = new Gson().fromJson(resws.getResult(),
                     new TypeToken<List<Aseguradora>>() {}.getType());
             if (listaAseguradoras != null) {
-                for(int i = 0; i < 11; i++) {
-                    aseguradoras[i] = listaAseguradoras.get(i).getNombre();
-                }
-                aseguradorasSpi.setAdapter(new ArrayAdapter<String>(this,
-                        android.R.layout.simple_spinner_item, aseguradoras));
+                aseguradorasSpi.setAdapter(new ArrayAdapter<Aseguradora>(this,
+                        android.R.layout.simple_spinner_item, listaAseguradoras));
+                aseguradorasSpi.setAdapter(new ArrayAdapter<Aseguradora>(this,
+                        R.layout.spinner_item, listaAseguradoras));
             }
         } else {
             mostrarAlertDialog("Error", resws.getResult());

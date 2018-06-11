@@ -1,6 +1,7 @@
 package com.rockola.rsx.ws;
 
 import com.rockola.rsx.ws.pojos.Conductor;
+import com.rockola.rsx.ws.pojos.Reporte;
 import com.rockola.rsx.ws.pojos.Vehiculo;
 
 import java.io.BufferedReader;
@@ -19,7 +20,7 @@ import java.net.URL;
 
 public class HttpUtils {
     private static final String BASE_URL =
-            "http://206.189.124.168:8080/transito/";
+            "http://192.168.100.8:8080/Transito/transito/";
     private static final Integer CONNECT_TIMEOUT = 4000; //MILISEGUNDOS
     private static final Integer READ_TIMEOUT = 10000; //MILISEGUNDOS
 
@@ -62,6 +63,23 @@ public class HttpUtils {
     public static Response consultarMarcas() {
         String param = "";
         return invocarServicioWeb("marca/consultarMarcas", "GET", param);
+    }
+
+    public static Response consultarVehiculos(String idConductor) {
+        String param = String.format("%s", idConductor);
+        return invocarServicioWeb("vehiculo/consultarVehiculos/", "GET", param);
+    }
+
+    public static Response consultarVehiculo(String noPlaca) {
+        String param = String.format("noPlaca=%s", noPlaca);
+        return invocarServicioWeb("vehiculo/consultarVehiculo", "POST", param);
+    }
+
+    public static Response levantarReporte(Reporte reporte) {
+        String param = String.format("latitud=%s&longitud=%s&nombreSiniestro=%s&" +
+                "apPaternoSiniestro=%s&apMaternoSiniestro=%s&idConductor=%s&idVehiculoConductor" +
+                "=%s&idVehiculoSiniestro=%s");
+        return invocarServicioWeb("reporte/levantarReporte", "POST", param);
     }
 
     private static Response invocarServicioWeb(String url, String tipoinvocacion, String parametros){

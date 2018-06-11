@@ -1,6 +1,7 @@
 package com.rockola.rsx.ws.pojos;
 
 public class Vehiculo {
+    private Integer idVehiculo;
     private String noPlaca;
     private String modelo;
     private String anio;
@@ -10,7 +11,8 @@ public class Vehiculo {
     private String idColor;
     private String idConductor;
 
-    public Vehiculo (){}
+    public Vehiculo() {
+    }
 
     public Vehiculo(String noPlaca, String modelo, String anio, String noPolizaSeguro, String idMarca, String idAseguradora, String idColor, String idConductor) {
         this.noPlaca = noPlaca;
@@ -21,6 +23,24 @@ public class Vehiculo {
         this.idAseguradora = idAseguradora;
         this.idColor = idColor;
         this.idConductor = idConductor;
+    }
+
+    public Vehiculo(String noPlaca, String modelo, String anio, String noPolizaSeguro, String idMarca, String idAseguradora, String idColor) {
+        this.noPlaca = noPlaca;
+        this.modelo = modelo;
+        this.anio = anio;
+        this.noPolizaSeguro = noPolizaSeguro;
+        this.idMarca = idMarca;
+        this.idAseguradora = idAseguradora;
+        this.idColor = idColor;
+    }
+
+    public Integer getIdVehiculo() {
+        return idVehiculo;
+    }
+
+    public void setIdVehiculo(Integer idVehiculo) {
+        this.idVehiculo = idVehiculo;
     }
 
     public String getNoPlaca() {
@@ -85,5 +105,10 @@ public class Vehiculo {
 
     public void setIdConductor(String idConductor) {
         this.idConductor = idConductor;
+    }
+
+    @Override
+    public String toString() {
+        return getNoPlaca();
     }
 }

@@ -35,4 +35,10 @@ public class MenuActivity extends AppCompatActivity {
         intent.putExtra("id_conductor", id_conductor);
         startActivity(intent);
     }
+
+    public void levantarReporte(View view) {
+        Intent intent = new Intent(MenuActivity.this, ReporteActivity.class);
+        intent.putExtra("id_conductor", id_conductor);
+        startActivity(intent);
+    }
 }

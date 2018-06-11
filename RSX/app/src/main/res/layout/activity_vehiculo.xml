@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="10dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingTop="10dp"
+    android:paddingBottom="15dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="15dp"
+    android:background="@color/fondo"
     tools:context=".VehiculoActivity">
 
     <TextView
@@ -16,142 +17,181 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Introduce los siguientes campos para registrar el vehículo"
-        android:textAlignment="viewStart"
-        android:textColor="@android:color/background_dark"
+        android:text="Registro de vehículo"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
         android:textSize="20sp" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="8dp"
-        android:layout_weight="1" />
-
-    <EditText
-        android:id="@+id/txt_placa"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="Número de Placa (Ejemplo: XYZ-23-123)"
-        android:inputType="textPersonName"
-        android:maxLength="10"
-        android:textSize="14sp" />
+        android:textColorHint="@color/hintColor"
+        android:layout_weight="1">
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="8dp"
-        android:layout_weight="1" />
+        <EditText
+            android:id="@+id/txt_placa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Número de Placa (Ejemplo: XYZ-23-123)"
+            android:inputType="textPersonName"
+            android:maxLength="11"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="#ffffff"
+            android:backgroundTint="@color/colorAccent"
+            android:textSize="18sp" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:id="@+id/txt_modelo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="Modelo"
-        android:inputType="textPersonName"
-        android:textSize="14sp" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="8dp"
-        android:layout_weight="1" />
-
-    <EditText
-        android:id="@+id/txt_anio"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="Año"
-        android:inputType="number"
-        android:textSize="14sp" />
+        android:textColorHint="@color/hintColor"
+        android:layout_weight="1">
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="8dp"
-        android:layout_weight="1" />
+        <EditText
+            android:id="@+id/txt_modelo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Modelo"
+            android:inputType="textPersonName"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="#ffffff"
+            android:backgroundTint="@color/colorAccent"
+            android:textSize="18sp" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:id="@+id/txt_poliza"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="Número de poliza del seguro (Opcional)"
-        android:inputType="number"
-        android:maxLength="12"
-        android:textSize="14sp" />
+        android:textColorHint="@color/hintColor"
+        android:layout_weight="1">
 
-    <Space
+        <EditText
+            android:id="@+id/txt_anio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Año"
+            android:inputType="number"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="#ffffff"
+            android:backgroundTint="@color/colorAccent"
+            android:textSize="18sp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="8dp"
-        android:layout_weight="1" />
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/hintColor"
+        android:layout_weight="1">
+
+        <EditText
+            android:id="@+id/txt_poliza"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/colorAccent"
+            android:ems="10"
+            android:hint="Número de poliza del seguro (Opcional)"
+            android:inputType="number"
+            android:maxLength="12"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="#ffffff"
+            android:textSize="18sp" />
+    </android.support.design.widget.TextInputLayout>
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Marca" />
+        android:text="Marca"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <Spinner
         android:id="@+id/marcaSpi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:spinnerMode="dialog" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:popupBackground="@drawable/spinner_color" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="363dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Aseguradora (Opcional)" />
+        android:text="Aseguradora (Opcional)"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <Spinner
         android:id="@+id/aseguradoraSpi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:spinnerMode="dialog"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:popupBackground="@drawable/spinner_color" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Color" />
+        android:text="Color"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <Spinner
         android:id="@+id/colorSpi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:spinnerMode="dialog"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:popupBackground="@drawable/spinner_color" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="8dp"
         android:layout_weight="1" />
 
-    <Button
-        android:id="@+id/registrar_button2"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:onClick="registrarVehiculo"
-        android:text="Registrar" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/cancelar_button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:onClick="cancelar"
-        android:text="Cancelar" />
+        <Button
+            android:id="@+id/cancelar_button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="cancelar"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/fondo"
+            android:textStyle="bold"
+            android:background="@drawable/round_background"
+            android:text="Cancelar" />
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0" />
+
+        <Button
+            android:id="@+id/registrar_button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="registrarVehiculo"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/fondo"
+            android:textStyle="bold"
+            android:background="@drawable/round_background"
+            android:text="Registrar" />
+    </LinearLayout>
+
 </LinearLayout>

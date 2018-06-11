@@ -44,6 +44,7 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/fondo"
+        android:onClick="levantarReporte"
         android:textStyle="bold" />
 
     <Space

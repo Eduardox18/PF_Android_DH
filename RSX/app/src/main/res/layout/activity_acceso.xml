@@ -26,7 +26,7 @@
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:textColorHint="@color/colorAccent"
+        android:textColorHint="@color/hintColor"
         android:layout_height="wrap_content">
 
         <EditText
@@ -49,7 +49,7 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="@color/colorAccent"
+        android:textColorHint="@color/hintColor"
         app:passwordToggleEnabled="true">
 
         <EditText

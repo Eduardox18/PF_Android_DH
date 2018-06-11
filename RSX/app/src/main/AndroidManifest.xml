@@ -46,7 +46,6 @@
         <activity
             android:name=".HistorialActivity"
             android:label="Historial de reportes"
-            android:theme="@style/AppTheme.NoActionBar"
             ></activity>
     </application>
 

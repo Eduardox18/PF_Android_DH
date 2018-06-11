@@ -41,4 +41,10 @@ public class MenuActivity extends AppCompatActivity {
         intent.putExtra("id_conductor", id_conductor);
         startActivity(intent);
     }
+
+    public void historialReportes(View view) {
+        Intent intent = new Intent(MenuActivity.this, HistorialActivity.class);
+        intent.putExtra("id_conductor", id_conductor);
+        startActivity(intent);
+    }
 }

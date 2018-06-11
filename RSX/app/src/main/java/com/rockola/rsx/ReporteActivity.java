@@ -55,13 +55,6 @@ public class ReporteActivity extends AppCompatActivity {
     private List<Vehiculo> listaVehiculos;
 
     private String id_conductor;
-    private String nombre_sin;
-    private String materno_sin;
-    private String paterno_sin;
-    private String placa_sin;
-    private String modelo_sin;
-    private String anio_sin;
-    private String poliza_sin;
 
     private Response resws;
     private FusedLocationProviderClient client;
@@ -114,14 +107,15 @@ public class ReporteActivity extends AppCompatActivity {
     }
 
     public void levantarReporte(View view) {
-        if (ActivityCompat.checkSelfPermission(ReporteActivity.this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        client.getLastLocation().addOnSuccessListener(ReporteActivity.this, new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if (validar() && isOnline() && (location != null)) {
-                    if (existeVehiculo) {
+        if (validar() && isOnline()) {
+            if (existeVehiculo) {
+
+                if (ActivityCompat.checkSelfPermission(ReporteActivity.this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                client.getLastLocation().addOnSuccessListener(ReporteActivity.this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
                         Vehiculo vehiculoAfectado = (Vehiculo) carro_spi.getSelectedItem();
 
                         Reporte reporte = new Reporte(
@@ -134,53 +128,44 @@ public class ReporteActivity extends AppCompatActivity {
                                 String.valueOf(vehiculoAfectado.getIdVehiculo()),
                                 String.valueOf(vehiculo.getIdVehiculo())
                         );
-                    } else {
-                        Vehiculo vehiculoAfectado = (Vehiculo) carro_spi.getSelectedItem();
 
-                        Reporte reporte = new Reporte(
-                                String.valueOf(location.getLatitude()),
-                                String.valueOf(location.getLongitude()),
-                                txt_nombreSin.getText().toString(),
-                                txt_paternoSin.getText().toString(),
-                                txt_maternoSin.getText().toString(),
-                                id_conductor,
-                                String.valueOf(vehiculoAfectado.getIdVehiculo())
-                        );
-
-                        String no_poliza_enviar;
-
-                        if (txt_poliza.getText() == null) {
-                            no_poliza_enviar = null;
-                        } else {
-                            no_poliza_enviar = txt_poliza.getText().toString();
-                        }
-
-                        Marca marca_obj = (Marca) marcas_spi_reporte.getSelectedItem();
-                        Aseguradora ase_obj = (Aseguradora) aseguradoras_spi_reporte.getSelectedItem();
-                        Color color_obj = (Color) colores_spi_reporte.getSelectedItem();
-
-                        Vehiculo vehiculo = new Vehiculo(
-                                txt_placa.getText().toString(),
-                                txt_modelo.getText().toString(),
-                                txt_anio.getText().toString(),
-                                no_poliza_enviar,
-                                Integer.toString(marca_obj.getIdMarca()),
-                                Integer.toString(ase_obj.getIdAseguradora()),
-                                Integer.toString(color_obj.getIdColor()),
-                                null
-                        );
-
-                        ReporteActivity.WSPOSTRegistrarVehiculoTask task =
-                                new ReporteActivity.WSPOSTRegistrarVehiculoTask();
-                        task.execute(vehiculo);
+                        ReporteActivity.WSPOSTLevantarReporte  taskThree = new ReporteActivity.WSPOSTLevantarReporte();
+                        taskThree.execute(reporte);
                     }
+                });
+
+            } else {
+                String no_poliza_enviar;
+
+                if (txt_poliza.getText() == null) {
+                    no_poliza_enviar = null;
                 } else {
-                    mostrarAlertDialog("Problema con la localización", "No se " +
-                            "ha podido recuperar la localización del dispositivo. Asegúrese " +
-                            "que la aplicación cuenta con los permisos necesarios.");
+                    no_poliza_enviar = txt_poliza.getText().toString();
                 }
+
+                Marca marca_obj = (Marca) marcas_spi_reporte.getSelectedItem();
+                Aseguradora ase_obj = (Aseguradora) aseguradoras_spi_reporte.getSelectedItem();
+                Color color_obj = (Color) colores_spi_reporte.getSelectedItem();
+
+                Vehiculo vehiculo = new Vehiculo(
+                        txt_placa.getText().toString(),
+                        txt_modelo.getText().toString(),
+                        txt_anio.getText().toString(),
+                        no_poliza_enviar,
+                        Integer.toString(marca_obj.getIdMarca()),
+                        Integer.toString(ase_obj.getIdAseguradora()),
+                        Integer.toString(color_obj.getIdColor()),
+                        null
+                );
+
+                ReporteActivity.WSPOSTRegistrarVehiculoTask taskOne = new ReporteActivity.WSPOSTRegistrarVehiculoTask();
+                taskOne.execute(vehiculo);
             }
-        });
+        } else {
+            mostrarAlertDialog("Problema con la localización", "No se " +
+                    "ha podido recuperar la localización del dispositivo. Asegúrese " +
+                    "que la aplicación cuenta con los permisos necesarios.");
+        }
     }
 
     private void requestPermission() {
@@ -468,14 +453,97 @@ public class ReporteActivity extends AppCompatActivity {
 
     private void resultadoRegistrar() {
         if (resws != null && !resws.isError() && resws.getResult() != null) {
+            ReporteActivity.WSGETUltimoVehiculo taskTwo = new ReporteActivity.WSGETUltimoVehiculo();
+            taskTwo.execute();
+        } else {
+            mostrarAlertDialog("Error", resws.getResult());
+        }
+    }
+
+    class WSGETUltimoVehiculo extends AsyncTask<String, String, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            resws = HttpUtils.consultarUltimo();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            resultadoUltimoVehiculo();
+        }
+    }
+
+    private void resultadoUltimoVehiculo() {
+        if (resws != null && !resws.isError() && resws.getResult() != null) {
+            Vehiculo vehiculo = new Gson().fromJson(resws.getResult(), Vehiculo.class);
+            if (vehiculo != null) {
+                id_vehiculo_reporte = String.valueOf(vehiculo.getIdVehiculo());
+
+                if (ActivityCompat.checkSelfPermission(ReporteActivity.this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                client.getLastLocation().addOnSuccessListener(ReporteActivity.this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        Vehiculo vehiculoAfectado = (Vehiculo) carro_spi.getSelectedItem();
+
+                        Reporte reporte = new Reporte(
+                                String.valueOf(location.getLatitude()),
+                                String.valueOf(location.getLongitude()),
+                                txt_nombreSin.getText().toString(),
+                                txt_paternoSin.getText().toString(),
+                                txt_maternoSin.getText().toString(),
+                                id_conductor,
+                                String.valueOf(vehiculoAfectado.getIdVehiculo()),
+                                id_vehiculo_reporte
+                        );
+
+                        ReporteActivity.WSPOSTLevantarReporte  taskThree = new ReporteActivity.WSPOSTLevantarReporte();
+                        taskThree.execute(reporte);
+                    }
+                });
+            }
+        } else {
+            mostrarAlertDialog("Error", resws.getResult());
+        }
+    }
+
+    class WSPOSTLevantarReporte extends AsyncTask<Reporte, String, String> {
+        @Override
+        protected String doInBackground(Reporte... params) {
+            resws = HttpUtils.levantarReporte(params[0]);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            resultadoLevantarReporte();
+        }
+    }
+
+    private void resultadoLevantarReporte() {
+        if (resws != null && !resws.isError() && resws.getResult() != null) {
             Mensaje mensaje = new Gson().fromJson(resws.getResult(), Mensaje.class);
-            if (mensaje.getStatusMensaje() == 300) {
+            if (mensaje.getStatusMensaje() == 500) {
                 mostrarAlertDialog("Éxito", mensaje.getMensaje());
-            } else if (mensaje.getStatusMensaje() == 301) {
+            } else if (mensaje.getStatusMensaje() == 501) {
                 mostrarAlertDialog("Intente más tarde", mensaje.getMensaje());
             } else if (mensaje.getStatusMensaje() == 1) {
                 mostrarAlertDialog("Error", mensaje.getMensaje());
             }
+
+            txt_nombreSin.getText().clear();
+            txt_paternoSin.getText().clear();
+            txt_maternoSin.getText().clear();
+            txt_placa.getText().clear();
+            txt_modelo.getText().clear();
+            txt_anio.getText().clear();
+            txt_poliza.getText().clear();
+            marcas_spi_reporte.setSelection(0);
+            aseguradoras_spi_reporte.setSelection(0);
+            colores_spi_reporte.setSelection(0);
         } else {
             mostrarAlertDialog("Error", resws.getResult());
         }

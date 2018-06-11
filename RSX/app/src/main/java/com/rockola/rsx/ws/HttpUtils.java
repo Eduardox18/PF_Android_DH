@@ -78,8 +78,25 @@ public class HttpUtils {
     public static Response levantarReporte(Reporte reporte) {
         String param = String.format("latitud=%s&longitud=%s&nombreSiniestro=%s&" +
                 "apPaternoSiniestro=%s&apMaternoSiniestro=%s&idConductor=%s&idVehiculoConductor" +
-                "=%s&idVehiculoSiniestro=%s");
+                "=%s&idVehiculoSiniestro=%s", reporte.getLatitud(), reporte.getLongitud(),
+                reporte.getNombreSiniestro(), reporte.getApPaternoSiniestro(), reporte.getApMaternoSiniestro(),
+                reporte.getIdConductor(), reporte.getIdVehiculoConductor(), reporte.getIdVehiculoSiniestro());
         return invocarServicioWeb("reporte/levantarReporte", "POST", param);
+    }
+
+    public static Response consultarUltimo() {
+        String param = "";
+        return invocarServicioWeb("vehiculo/ultimoVehiculo", "GET", param);
+    }
+
+    public static Response recuperarReportes(String id_conductor) {
+        String param = String.format("idConductor=%s", id_conductor);
+        return invocarServicioWeb("reporte/recuperarReportes", "POST", param);
+    }
+
+    public static Response consultarDictamen(String idReporte) {
+        String param = String.format("idReporte=%s", idReporte);
+        return invocarServicioWeb("dictamen/recuperarDictamen", "POST", param);
     }
 
     private static Response invocarServicioWeb(String url, String tipoinvocacion, String parametros){

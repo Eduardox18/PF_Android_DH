@@ -198,6 +198,14 @@ public class VehiculoActivity extends AppCompatActivity {
             } else if (mensaje.getStatusMensaje() == 1) {
                 mostrarAlertDialog("Error", mensaje.getMensaje());
             }
+
+            txt_placa.getText().clear();
+            txt_modelo.getText().clear();
+            txt_anio.getText().clear();
+            txt_poliza.getText().clear();
+            marcaSpi.setSelection(0);
+            aseguradorasSpi.setSelection(0);
+            coloresSpi.setSelection(0);
         } else {
             mostrarAlertDialog("Error", resws.getResult());
         }
